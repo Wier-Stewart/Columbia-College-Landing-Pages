@@ -1,0 +1,72 @@
+@import url("https://use.typekit.net/bko7run.css");
+body,
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: relative;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: auto;
+  padding: clamp(20px, 5cqw, 80px);
+}
+
+.logo-banner {
+  filter: drop-shadow(0 3px 5px rgba(33, 33, 33, 0.4));
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo-banner--inner {
+  background-color: #5f259f;
+  background: linear-gradient(rgb(27.5610244098%, 10.7342937175%, 46.1284513806%), #5f259f, rgb(46.9487795118%, 18.2853141257%, 78.5774309724%));
+  text-align: center;
+  margin-inline: auto;
+  clip-path: polygon(calc(-1rem - 5px) 0, calc(100% + 1rem + 5px) 0, calc(100% + 1rem + 5px) calc(100% - 2rem), 50% 100%, calc(-1rem - 5px) calc(100% - 2rem));
+}
+.logo-banner img {
+  max-width: 140px;
+  max-height: 140px;
+  object-fit: contain;
+  object-position: center;
+  padding: 10px 30px;
+}
+
+.hero {
+  aspect-ratio: 2/1;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  margin-top: -50px;
+  position: relative;
+}
+.hero:after {
+  content: "";
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  background: linear-gradient(rgba(33, 33, 33, 0.5), rgba(33, 33, 33, 0.8));
+  mix-blend-mode: multiply;
+}
+.hero .inner {
+  z-index: 1;
+  position: relative;
+}
+.hero h1 {
+  font-family: calluna, serif;
+  color: #ffffff;
+  text-align: center;
+  margin: auto;
+  font-size: clamp(42px, 8cqw, 122px);
+  line-height: 1em;
+  filter: drop-shadow(0 2px 2px rgba(33, 33, 33, 0.5));
+}
