@@ -9,10 +9,26 @@
   ],
   "creatorBuild" : "36870",
   "files" : {
+    "\/.gitattributes" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/.gitattributes",
+      "oF" : 0
+    },
     "\/build" : {
       "ft" : 65536,
       "oA" : 1,
       "oAP" : "\/build\/build",
+      "oF" : 0
+    },
+    "\/gemini.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/gemini.html",
       "oF" : 0
     },
     "\/index.html" : {
@@ -58,6 +74,16 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/src\/images\/campaign-heading.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/campaign-heading.svg",
+      "oF" : 0,
+      "opt" : 1,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
     "\/src\/images\/ColumbiaCollege-FullStacked-1PMS.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -68,6 +94,19 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
+    "\/src\/images\/hero-bg.png" : {
+      "ft" : 32768,
+      "iS" : 2494918,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/hero-bg.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
     "\/src\/images\/logo-stacked-horz-rgb.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -77,6 +116,27 @@
       "opt" : 1,
       "plM" : 52780316221407,
       "prP" : 0
+    },
+    "\/src\/images\/traditional-undergraduate.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/traditional-undergraduate.html",
+      "oF" : 0
+    },
+    "\/src\/images\/undergrad-hero.png" : {
+      "ft" : 32768,
+      "iS" : 3082811,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/undergrad-hero.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
     },
     "\/src\/style.css" : {
       "aP" : 1,
