@@ -308,7 +308,7 @@ h2 {
             height: 5px;
             width: 3ch;
             background-color: $yellow;
-            margin: 10px auto;
+            margin: 20px auto;
             border-radius: 30px;
 
         }
@@ -318,7 +318,12 @@ h2 {
 .feature-cards {
     display: flex;
     gap: 30px;
-    margin: 40px auto;
+    margin: 60px auto;
+
+    @include md {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 }
 
 .feature-card {
@@ -328,6 +333,14 @@ h2 {
     border: 1px solid color.adjust($purple, $lightness: 50%);
     border-radius: 22px;
     filter: drop-shadow(0 1px 8px rgba($black, .05));
+
+    @include md {
+        flex-basis: calc(50% - 10px);
+    }
+
+    @include vs {
+        flex-basis: calc(100% - 10px);
+    }
 
     &--icon {
         width: 35px;
@@ -372,6 +385,20 @@ h2 {
 
         &:last-child {
             margin-bottom: 0;
+        }
+    }
+}
+
+.faq-section {
+    .container {
+        padding: 80px 60px;
+
+        @include md {
+            padding: 60px 40px;
+        }
+
+        @include vs {
+            padding: 40px 20px;
         }
     }
 }
