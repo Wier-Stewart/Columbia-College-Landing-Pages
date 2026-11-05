@@ -4,6 +4,7 @@
 $heading: calluna, serif;
 $sans: proxima-nova, sans-serif;
 
+
 $black: #212121;
 $purple: #573393;
 $plum: #382246;
@@ -66,6 +67,12 @@ html {
     font-size: clamp(18px, 3vw, 20px);
     line-height: 1.5em;
     font-family: $sans;
+    color: $black;
+    background-color: $white;
+}
+
+p {
+    margin: 0 0 1em;
 }
 
 h1 {
@@ -392,6 +399,7 @@ h2 {
 .faq-section {
     .container {
         padding: 80px 60px;
+        max-width: 1140px;
 
         @include md {
             padding: 60px 40px;
@@ -399,6 +407,58 @@ h2 {
 
         @include vs {
             padding: 40px 20px;
+        }
+    }
+
+    h2 {
+        color: $plum;
+    }
+
+    .faq-container {
+        margin: 60px 0;
+        counter-reset: faq-counter;
+        @include vs {
+            margin: 40px 0;
+        }
+    }
+
+    .faq {
+        border: 1px solid color.adjust($purple, $lightness: 50%);
+        margin-bottom: 20px;
+        padding: 30px;
+        border-radius: 12px;
+        filter: drop-shadow(0 1px 2px rgba($black, .05));
+
+        &--question {
+            font-family: $heading;
+            color: $purple;
+            margin: 0 0 .5em;
+            font-size: 1.3rem;
+            font-weight: 700;
+            counter-increment: faq-counter;
+            padding-left: 40px;
+
+            &::before {
+                content: "Q" counter(faq-counter) ". ";
+                font-weight: bold;
+                color: $yellow;
+                display: inline-flex;
+                font-family: $sans;
+                font-size: .8em;
+                width: 40px;
+                margin-left: -40px;
+            }
+
+        }
+
+        &--answer {
+            padding-left: 40px;
+
+            p {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 }
