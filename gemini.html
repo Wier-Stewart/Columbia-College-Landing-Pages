@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <!-- ============================================================== -->
+  <!-- COPY DOC FIELD: Meta Title & Meta Description                  -->
+  <!-- ============================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undergraduate Admissions at Columbia College | Start Your Application</title>
+  <meta name="description" content="Small classes, 50+ majors, and a campus built for your next four years. Apply to Columbia College with no application fee.">
+
+  <!-- Google Fonts: Inter & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN (Works natively with VS Code and CodeKit) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Theme Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#522180',       // Official Columbia Purple
+              purpleDark: '#3c175f',   // Deep Purple
+              plum: '#230b38',         // Header / Footer Plum
+              teal: '#008b9e',         // Campaign Action Teal
+              tealHover: '#007585',    // Teal Hover State
+              tealLight: '#f0fdfa',    // Teal Tint
+              cardBg: '#ffffff',
+            }
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          },
+          boxShadow: {
+            'crest': '0 8px 24px -4px rgba(35, 11, 56, 0.45), 0 2px 6px -1px rgba(0, 0, 0, 0.25)',
+            'card-lift': '0 10px 25px -3px rgba(82, 33, 128, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Campaign teal accent border */
+    .teal-rule {
+      border-bottom: 2px solid #008b9e;
+    }
+    .transition-custom {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-teal selection:text-white">
+
+  <!-- ============================================================== -->
+  <!-- 1. HEADER: SLIM UTILITY BAR + SIGNATURE HANGING CREST BADGE   -->
+  <!-- ============================================================== -->
+  <header class="relative z-40 w-full">
+    <!-- Utility phone strip -->
+    <div class="bg-brand-plum text-white border-b border-purple-900/40">
+      <div class="max-w-6xl mx-auto px-4 h-12 flex items-center justify-between text-xs font-medium">
+        <span class="hidden sm:inline-block text-purple-200 tracking-wide font-medium">
+          Columbia College Admissions &bull; Be The Difference
+        </span>
+        
+        <!-- Center spacer reserved for crest badge -->
+        <div class="w-28 sm:w-36"></div>
+
+        <a href="tel:8002771301" class="ml-auto flex items-center gap-1.5 text-teal-300 hover:text-white transition-custom">
+          <svg class="w-3.5 h-3.5 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a11.042 11.042 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          <span class="font-bold tracking-wider">800.277.1301</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Centered Hanging Crest Badge (Matches your original site) -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 z-50">
+      <div class="block bg-brand-purple hover:bg-brand-purpleDark transition-custom w-28 sm:w-36 pt-2 pb-3 px-3 rounded-b-2xl shadow-crest border-b border-x border-purple-300/20 text-center">
+        <!-- Cupola Architectural Icon -->
+        <div class="w-8 h-8 sm:w-9 sm:h-9 mx-auto text-white mb-1">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" class="w-full h-full drop-shadow">
+            <line x1="24" y1="2" x2="24" y2="7" />
+            <circle cx="24" cy="4" r="1.2" fill="currentColor" />
+            <path d="M17 17 C17 10, 21 7, 24 7 C27 7, 31 10, 31 17 Z" fill="currentColor" stroke="none" />
+            <rect x="15" y="17" width="18" height="2.5" rx="0.5" fill="currentColor" stroke="none" />
+            <line x1="17.5" y1="19.5" x2="17.5" y2="29" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="21.8" y1="19.5" x2="21.8" y2="29" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="26.2" y1="19.5" x2="26.2" y2="29" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="30.5" y1="19.5" x2="30.5" y2="29" stroke-width="2.2" stroke-linecap="round" />
+            <rect x="14" y="29" width="20" height="2.5" fill="currentColor" stroke="none" />
+            <rect x="12" y="32" width="24" height="2" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+        <!-- Wordmark -->
+        <div class="text-white font-serif tracking-widest leading-none">
+          <span class="block text-[10px] sm:text-[11px] font-bold tracking-[0.16em]">COLUMBIA</span>
+          <span class="block text-[10px] sm:text-[11px] font-bold tracking-[0.16em] mt-0.5">COLLEGE</span>
+        </div>
+        <!-- 1854 Seal -->
+        <div class="flex items-center justify-center gap-1.5 mt-1 opacity-80">
+          <span class="w-2.5 h-[1px] bg-white/60"></span>
+          <span class="text-[8px] sm:text-[9px] font-sans font-bold tracking-wider text-purple-200">1854</span>
+          <span class="w-2.5 h-[1px] bg-white/60"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ============================================================== -->
+  <!-- 2. HERO SECTION: COPY DOC MAPPING                              -->
+  <!-- ============================================================== -->
+  <section class="relative bg-gradient-to-b from-brand-plum via-brand-purple to-brand-plum text-white pt-20 pb-16 lg:pt-24 lg:pb-20 overflow-hidden">
+    
+    <!-- Campaign Photo Shoot Background Overlay -->
+    <div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80" 
+           alt="Columbia College Shoot Photography" 
+           class="w-full h-full object-cover">
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      
+      <!-- COPY DOC: Eyebrow -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-teal-300 text-xs font-bold tracking-wider uppercase backdrop-blur-sm border border-white/15 mb-5">
+        <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+        <span>TRADITIONAL UNDERGRADUATE</span>
+      </div>
+
+      <!-- COPY DOC: Headline -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight text-white leading-tight max-w-4xl mx-auto drop-shadow-sm">
+        Find Your Place at Columbia College
+      </h1>
+
+      <!-- COPY DOC: Subheadline -->
+      <p class="text-purple-100 text-base sm:text-lg lg:text-xl font-normal max-w-2xl mx-auto mt-4 mb-8 leading-relaxed">
+        Small classes, real mentors, and a campus built for the next four years of your life.
+      </p>
+
+      <!-- CTA Action Button & Microcopy Group -->
+      <div class="flex flex-col items-center justify-center gap-2.5">
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <!-- COPY DOC: Primary CTA Button -->
+          <a href="#request-info" class="bg-brand-teal hover:bg-brand-tealHover text-white px-8 py-3.5 rounded-xl font-bold text-sm tracking-wider uppercase shadow-lg shadow-black/20 hover:shadow-teal-500/20 transform hover:-translate-y-0.5 transition-custom">
+            Start Your Application
+          </a>
+
+          <!-- Campaign Video Teaser Pill -->
+          <a href="#campaign-video" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm backdrop-blur-sm transition-custom border border-white/10">
+            <svg class="w-4 h-4 text-teal-300 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>Watch Campaign Film</span>
+          </a>
+        </div>
+
+        <!-- COPY DOC: Microcopy (under button) -->
+        <p class="text-xs text-purple-200/90 tracking-wide mt-1">
+          No application fee. Apply anytime, there's no deadline to wait on.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 3. TRUST BAR: COPY DOC MAPPING                                 -->
+  <!-- ============================================================== -->
+  <section class="bg-brand-tealLight border-y border-teal-100 py-5 sm:py-6">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <!-- COPY DOC: Trust Bar Text -->
+      <p class="text-sm sm:text-base font-serif italic text-brand-purple font-semibold leading-relaxed flex items-center justify-center gap-2">
+        <span class="text-brand-teal hidden sm:inline">&bull;</span>
+        Named the #1 Best College for Women in South Carolina by Newsweek. Now Co-ed since 2021.
+        <span class="text-brand-teal hidden sm:inline">&bull;</span>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 4. FEATURE CARDS: COPY DOC MAPPING [2x2 LAYOUT]                -->
+  <!-- ============================================================== -->
+  <section class="py-14 sm:py-20 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold font-serif text-brand-purple">
+          Why Columbia College
+        </h2>
+        <div class="w-12 h-1 bg-brand-teal mx-auto mt-3 rounded-full"></div>
+      </div>
+
+      <!-- 2x2 Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+
+        <!-- CARD 1 -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-card-lift hover:shadow-xl transition-custom group">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 text-brand-teal flex items-center justify-center font-bold mb-4 group-hover:bg-brand-teal group-hover:text-white transition-custom">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <!-- COPY DOC: Feature Card 1 Title -->
+          <h3 class="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-wider mb-2">
+            1. Small Classes, Real Mentors
+          </h3>
+          <!-- COPY DOC: Feature Card 1 Body -->
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A 14:1 student-to-faculty ratio means professors who know your name and your goals.
+          </p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-card-lift hover:shadow-xl transition-custom group">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 text-brand-teal flex items-center justify-center font-bold mb-4 group-hover:bg-brand-teal group-hover:text-white transition-custom">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <!-- COPY DOC: Feature Card 2 Title -->
+          <h3 class="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-wider mb-2">
+            2. 50+ Majors and Minors
+          </h3>
+          <!-- COPY DOC: Feature Card 2 Body -->
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Explore before you commit. Switch paths without losing time or credits.
+          </p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-card-lift hover:shadow-xl transition-custom group">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 text-brand-teal flex items-center justify-center font-bold mb-4 group-hover:bg-brand-teal group-hover:text-white transition-custom">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <!-- COPY DOC: Feature Card 3 Title -->
+          <h3 class="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-wider mb-2">
+            3. Real Campus Life
+          </h3>
+          <!-- COPY DOC: Feature Card 3 Body -->
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Athletics, student organizations, and a residential campus minutes from downtown Columbia.
+          </p>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-card-lift hover:shadow-xl transition-custom group">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 text-brand-teal flex items-center justify-center font-bold mb-4 group-hover:bg-brand-teal group-hover:text-white transition-custom">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <!-- COPY DOC: Feature Card 4 Title -->
+          <h3 class="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-wider mb-2">
+            4. A Career-Ready Path
+          </h3>
+          <!-- COPY DOC: Feature Card 4 Body -->
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Every major is built around what comes after graduation, not just what happens in the classroom.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 5. OPTIONAL: GRADUATE / CAREER PATHWAYS (Used on School Pages) -->
+  <!-- ============================================================== -->
+  <section class="py-12 bg-white border-y border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-gradient-to-r from-purple-50 to-teal-50/50 p-6 sm:p-8 rounded-2xl border border-purple-100 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <span class="text-xs font-bold text-brand-teal uppercase tracking-wider">Pathway Extension</span>
+          <h3 class="text-lg sm:text-xl font-bold font-serif text-brand-purple mt-1">
+            Interested in continuing your education even further?
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            Seamlessly bridge into our graduate degrees with accelerated completion options.
+          </p>
+        </div>
+        <a href="#request-info" class="bg-brand-purple hover:bg-brand-purpleDark text-white px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-custom whitespace-nowrap shadow-sm">
+          Explore Master's Options
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 6. CAMPAIGN VIDEO MODAL/SECTION ANCHOR                        -->
+  <!-- ============================================================== -->
+  <section id="campaign-video" class="py-14 bg-brand-plum text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-teal-300 text-xs font-semibold tracking-wider uppercase mb-3">
+        Campus Life & Culture
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold font-serif mb-3">
+        See What It Means to <span class="text-teal-400">Be The Difference</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-purple-200 max-w-lg mx-auto mb-8">
+        Step onto our historic campus and see how our students, faculty, and mentors build an environment where everyone belongs.
+      </p>
+
+      <!-- Video Aspect Box (Swap embed src with campaign shoot asset) -->
+      <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+        <iframe 
+          class="w-full h-full" 
+          src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+          title="Columbia College Campaign Film" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 7. FREQUENTLY ASKED QUESTIONS: COPY DOC MAPPING               -->
+  <!-- ============================================================== -->
+  <section class="py-14 sm:py-20 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-purple">
+          Frequently Asked Questions
+        </h2>
+        <div class="w-12 h-1 bg-brand-teal mx-auto mt-3 rounded-full"></div>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- COPY DOC: FAQ 1 -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm hover:border-brand-purple/40 transition-custom">
+          <h3 class="text-base font-serif font-bold text-brand-purple flex items-start gap-2.5">
+            <span class="text-brand-teal text-xs font-sans font-extrabold mt-0.5">Q1.</span>
+            <span>Is there an application fee?</span>
+          </h3>
+          <p class="text-sm text-slate-600 mt-2 pl-6 leading-relaxed">
+            No. The application is always free and open, and there is no deadline to wait for.
+          </p>
+        </div>
+
+        <!-- COPY DOC: FAQ 2 -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm hover:border-brand-purple/40 transition-custom">
+          <h3 class="text-base font-serif font-bold text-brand-purple flex items-start gap-2.5">
+            <span class="text-brand-teal text-xs font-sans font-extrabold mt-0.5">Q2.</span>
+            <span>Do I need to know my major before I apply?</span>
+          </h3>
+          <p class="text-sm text-slate-600 mt-2 pl-6 leading-relaxed">
+            Not at all. Most students choose or confirm their major within their first year on campus.
+          </p>
+        </div>
+
+        <!-- COPY DOC: FAQ 3 -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm hover:border-brand-purple/40 transition-custom">
+          <h3 class="text-base font-serif font-bold text-brand-purple flex items-start gap-2.5">
+            <span class="text-brand-teal text-xs font-sans font-extrabold mt-0.5">Q3.</span>
+            <span>Can I visit campus before I decide?</span>
+          </h3>
+          <p class="text-sm text-slate-600 mt-2 pl-6 leading-relaxed">
+            Yes. Schedule a private tour or join a group visit whenever it fits your schedule.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 8. REQUEST FORM SECTION: COPY DOC MAPPING + SLATE EMBED READY  -->
+  <!-- ============================================================== -->
+  <section id="request-info" class="py-16 bg-white border-t border-slate-200">
+    <div class="max-w-xl mx-auto px-4 sm:px-6">
+      
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-card-lift">
+        
+        <div class="text-center mb-6">
+          <div class="w-10 h-10 rounded-full bg-brand-purple text-white flex items-center justify-center mx-auto mb-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <h2 class="text-2xl font-bold font-serif text-brand-purple">
+            Request Program Information
+          </h2>
+          <!-- COPY DOC: Intro line -->
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            An admissions counselor will follow up with you.
+          </p>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- SLATE CRM EMBED POINT:                                     -->
+        <!-- If KD provides a Slate embed, paste their script here.     -->
+        <!-- Otherwise, use this standard HTML form.                    -->
+        <!-- ========================================================== -->
+        <form onsubmit="event.preventDefault(); document.getElementById('form-success').classList.remove('hidden');" class="space-y-4">
+          
+          <!-- Full Name -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name *</label>
+            <input type="text" required placeholder="Alex Morgan" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-teal focus:outline-none bg-white">
+          </div>
+
+          <!-- Email Address -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
+            <input type="email" required placeholder="alex@example.com" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-teal focus:outline-none bg-white">
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number *</label>
+            <input type="tel" required placeholder="(803) 555-0123" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-teal focus:outline-none bg-white">
+          </div>
+
+          <!-- Expected Start Term (Dropdown from Copy Doc) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Expected Start Term</label>
+            <select class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-brand-teal focus:outline-none text-slate-700">
+              <option value="">Select a term...</option>
+              <option value="fall-2026">Fall 2026</option>
+              <option value="spring-2027">Spring 2027</option>
+              <option value="summer-2027">Summer 2027</option>
+            </select>
+          </div>
+
+          <!-- Program of Interest Dropdown (Used for School Pages) -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Program of Interest</label>
+            <select class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-brand-teal focus:outline-none text-slate-700">
+              <option value="">Select program (or Not sure yet)...</option>
+              <option value="arts-sciences">School of Arts & Sciences</option>
+              <option value="business">School of Business & Leadership</option>
+              <option value="education">School of Education</option>
+              <option value="health-sciences">School of Health Sciences</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+
+          <!-- SMS Consent Checkbox -->
+          <div class="text-[11px] text-slate-500 pt-1">
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" checked class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal">
+              <span>I agree to receive admissions updates via text message. Msg & data rates may apply.</span>
+            </label>
+          </div>
+
+          <!-- COPY DOC: Submit Button -->
+          <button type="submit" class="w-full bg-brand-teal hover:bg-brand-tealHover text-white py-3.5 px-4 rounded-xl font-bold text-sm tracking-wider uppercase shadow-md transition-custom">
+            Start Your Application
+          </button>
+
+          <div id="form-success" class="hidden text-center text-xs font-bold text-emerald-800 bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+            &check; Thank you! An admissions counselor will follow up with you shortly.
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 9. BOTTOM CLOSING CTA BANNER                                   -->
+  <!-- ============================================================== -->
+  <section class="bg-gradient-to-b from-brand-purple to-brand-plum text-white py-14 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-3xl font-serif font-bold mb-3 tracking-tight">
+        Begin Today
+      </h2>
+      <p class="text-sm text-purple-200 mb-6 max-w-md mx-auto">
+        An admissions counselor will follow up with you.
+      </p>
+      <a href="#request-info" class="inline-block bg-brand-teal hover:bg-brand-tealHover text-white px-8 py-3.5 rounded-xl font-bold text-sm tracking-wider uppercase shadow-lg transition-custom">
+        Start Your Application
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- 10. MINIMAL AD LANDING FOOTER                                  -->
+  <!-- ============================================================== -->
+  <footer class="bg-brand-plum text-purple-200 py-8 border-t border-purple-900/60 text-xs text-center">
+    <div class="max-w-4xl mx-auto px-4 space-y-2">
+      <div class="font-serif font-bold text-white text-sm tracking-widest">
+        COLUMBIA COLLEGE
+      </div>
+      <div>1301 Columbia College Drive &bull; Columbia, SC 29203 &bull; <a href="tel:8002771301" class="text-teal-300 hover:underline">800.277.1301</a></div>
+      <div class="pt-2 text-[11px] text-purple-300/70">
+        &copy; Columbia College. All rights reserved. &bull; <a href="#" class="underline hover:text-white">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
