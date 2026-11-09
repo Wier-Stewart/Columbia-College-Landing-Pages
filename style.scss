@@ -90,10 +90,27 @@ h2 {
 }
 
 .logo-banner {
-    filter: drop-shadow(0 3px 5px color.change($black, $alpha: 0.4));
     position: sticky;
     top: 0;
     z-index: 100;
+
+    &.scrolled {
+        filter: drop-shadow(0 3px 5px rgba($black, 0.4));
+
+        .logo-banner--inner {
+            clip-path: polygon(-25px 0,
+                    calc(100% + 25px) 0,
+                    calc(100% + 25px) 100%,
+                    50% 100%,
+                    -25px 100%);
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            padding: 5px;
+        }
+    }
 
     &--inner {
         background-color: $purple;
@@ -105,6 +122,14 @@ h2 {
                 calc(100% + 25px) calc(100% - 40px),
                 50% 100%,
                 -25px calc(100% - 40px));
+        transition: .3s ease-in;
+
+    }
+
+    a {
+        display: block;
+        margin: auto;
+
     }
 
     img {
@@ -113,6 +138,7 @@ h2 {
         object-fit: contain;
         object-position: center;
         padding: 10px 30px;
+        transition: .3s ease-in;
 
         @include sm {
             max-width: 140px;
@@ -417,6 +443,7 @@ h2 {
     .faq-container {
         margin: 60px 0;
         counter-reset: faq-counter;
+
         @include vs {
             margin: 40px 0;
         }
@@ -459,6 +486,86 @@ h2 {
                     margin-bottom: 0;
                 }
             }
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-section {
+    background-color: $green;
+    color: $brown;
+
+    .container {
+        padding: 80px 60px;
+        max-width: 1140px;
+
+        @include md {
+            padding: 60px 40px;
+        }
+
+        @include vs {
+            padding: 40px 20px;
+        }
+    }
+
+    h2 {
+        text-align: center;
+        margin: 0 auto 1em;
+    }
+}
+
+footer {
+    background-color: $purple;
+    background: linear-gradient($purple, $plum);
+
+    .container {
+        padding: 60px;
+        max-width: 1140px;
+
+        @include md {
+            padding: 40px;
+        }
+
+        @include vs {
+            padding: 40px 20px;
+        }
+    }
+
+    .footer {
+        &--logo {
+            margin: 0 auto 40px;
+            display: block;
+            width: max-content;
+
+            img {
+                width: 100%;
+                max-width: 180px;
+            }
+        }
+
+        &--contact {
+            color: $white;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 0;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+
+        &--sub {
+            color: $white;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid $purple;
+            max-width: 1140px;
+            margin: auto;
         }
     }
 }

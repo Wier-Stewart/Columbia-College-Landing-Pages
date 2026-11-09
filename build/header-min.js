@@ -1,0 +1,1 @@
+const header=document.querySelector(".logo-banner");window.addEventListener("scroll",(()=>{header.classList.toggle("scrolled",window.scrollY>50)}),{passive:!0});
