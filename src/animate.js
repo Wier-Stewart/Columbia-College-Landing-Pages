@@ -93,10 +93,27 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ========================================================================
      3. Feature Cards Auto-Rotation (3s Loop)
      ======================================================================== */
+  /* ========================================================================
+     3. Feature Cards Auto-Rotation + Hand-Drawn Circle (3s Loop)
+     ======================================================================== */
   const cardsContainer = document.querySelector(".feature-cards");
   const cards = document.querySelectorAll(".feature-card");
 
   if (cards.length) {
+    // Inject the hand-drawn circle SVG into each card with a unique mask ID
+   // Inject the thin hand-drawn circle SVG into each card
+    cards.forEach((card) => {
+      card.insertAdjacentHTML(
+        "beforeend",
+        `
+        <svg class="feature-card--circle" viewBox="0 0 393.22 477.8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path class="circle-stroke" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 218,12 C 118,18 32,105 16,238 C 2,365 78,464 198,464 C 318,464 384,368 380,245 C 376,125 288,52 182,58 C 82,64 34,152 40,262 C 46,368 122,436 226,426 C 282,420 326,392 352,354" />
+        </svg>
+        `
+      );
+    });
+
     let currentIndex = Array.from(cards).findIndex((card) =>
       card.classList.contains("active")
     );
