@@ -492,7 +492,7 @@ p {
         .circle-stroke {
             fill: none;
             stroke: $red;
-            stroke-width: 4.5px; // Adjust this value (e.g., 3.5px or 6px) to fine-tune thickness
+            stroke-width: 2.5px; 
             stroke-linecap: round;
             stroke-linejoin: round;
             stroke-dasharray: 100;
@@ -1195,5 +1195,5 @@ footer {
         animation: none;
         transition: none;
         stroke-dashoffset: 0;
-    }f
+    }
 }
