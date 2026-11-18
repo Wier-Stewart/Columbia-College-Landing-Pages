@@ -47,12 +47,6 @@
       "oAP" : "\/build\/index.html",
       "oF" : 0
     },
-    "\/node_modules" : {
-      "ft" : 65536,
-      "oA" : 2,
-      "oAP" : "\/build\/node_modules",
-      "oF" : 0
-    },
     "\/package-lock.json" : {
       "ft" : 524288,
       "oA" : 2,
@@ -113,6 +107,19 @@
       "opt" : 1,
       "plM" : 52780316221407,
       "prP" : 0
+    },
+    "\/src\/images\/cbook-bg.png" : {
+      "ft" : 32768,
+      "iS" : 676337,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/cbook-bg.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
     },
     "\/src\/images\/ColumbiaCollege-FullStacked-1PMS.svg" : {
       "ft" : 2097152,

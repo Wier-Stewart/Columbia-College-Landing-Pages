@@ -42,12 +42,41 @@ $container-narrow: 1140px;
 2. Breakpoints & Mixins
    ========================================================================== */
 
-@mixin xl { @media (max-width: 1440px) { @content; } }
-@mixin lg { @media (max-width: 1200px) { @content; } }
-@mixin md { @media (max-width: 992px)  { @content; } }
-@mixin sm { @media (max-width: 768px)  { @content; } }
-@mixin vs { @media (max-width: 600px)  { @content; } }
-@mixin xs { @media (max-width: 480px)  { @content; } }
+@mixin xl {
+    @media (max-width: 1440px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin vs {
+    @media (max-width: 600px) {
+        @content;
+    }
+}
+
+@mixin xs {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
 
 @mixin section-padding($py: 80px, $px: 60px) {
     padding: $py $px;
@@ -101,6 +130,13 @@ body {
     font-family: $sans;
     font-size: clamp(18px, 3vw, 20px);
     line-height: 1.5em;
+
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+
 }
 
 h1,
@@ -157,13 +193,11 @@ p {
         margin-inline: auto;
         background: linear-gradient($plum, $purple);
         text-align: center;
-        clip-path: polygon(
-            -25px 0,
-            calc(100% + 25px) 0,
-            calc(100% + 25px) calc(100% - 40px),
-            50% 100%,
-            -25px calc(100% - 40px)
-        );
+        clip-path: polygon(-25px 0,
+                calc(100% + 25px) 0,
+                calc(100% + 25px) calc(100% - 40px),
+                50% 100%,
+                -25px calc(100% - 40px));
         transition: 0.3s ease-in;
     }
 
@@ -189,13 +223,11 @@ p {
         filter: drop-shadow(0 3px 5px rgba($black, 0.4));
 
         .logo-banner--inner {
-            clip-path: polygon(
-                -25px 0,
-                calc(100% + 25px) 0,
-                calc(100% + 25px) 100%,
-                50% 100%,
-                -25px 100%
-            );
+            clip-path: polygon(-25px 0,
+                    calc(100% + 25px) 0,
+                    calc(100% + 25px) 100%,
+                    50% 100%,
+                    -25px 100%);
         }
 
         img {
@@ -327,8 +359,13 @@ p {
             background-color: $green;
         }
 
-        &::before { margin-right: 1.3ch; }
-        &::after  { margin-left: 1.3ch; }
+        &::before {
+            margin-right: 1.3ch;
+        }
+
+        &::after {
+            margin-left: 1.3ch;
+        }
     }
 }
 
@@ -483,8 +520,10 @@ p {
 
 /* --- Application Form Section --- */
 .form-section {
-    background-color: $green;
-    color: $brown;
+    background-color: $purple;
+    color: $white;
+    background-image: url('/src/images/cbook-bg.png');
+    background-size: cover;
 
     .container {
         @include section-padding;
@@ -549,16 +588,17 @@ footer {
 .form_container[id^="form_"] {
     max-width: 800px;
     margin: 40px auto;
+    color: $black;
 
     form {
-        padding: 20px 30px;
+        padding: 30px clamp(30px, 3vw, 40px);
         border-radius: 22px;
         background-color: $white;
         box-shadow: 0 2px 8px rgba($black, 0.1);
     }
 
     .form_header .form_label {
-        width: max-content;
+        width: auto;
         padding: 0 0 0.5em;
         border-bottom: 1px solid;
         background: none;
@@ -609,6 +649,31 @@ footer {
         }
     }
 
+    .form_responses {
+        .form_response {
+            line-height: 1.1em;
+            display: flex;
+            align-items: flex-start;
+            gap: 1ch;
+            margin-bottom: 0.5em;
+
+            &:first-child {
+                margin-top: .5em;
+            }
+
+            input[type='radio'],
+            input[type='checkbox'] {
+                flex-shrink: 0;
+                margin-top: 0.25em; // Aligns the circle with the first line of text
+            }
+
+            label {
+                margin: 0;
+            }
+
+        }
+    }
+
     .form_action_submit {
         text-align: right;
 
@@ -627,6 +692,7 @@ footer {
         opacity: 0;
         transform: translateY(16px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -634,14 +700,24 @@ footer {
 }
 
 @keyframes writeReveal {
-    to {
+    0% {
+        stroke-dashoffset: 115;
+        opacity: 0;
+    }
+
+    1% {
+        opacity: 1;
+    }
+
+    100% {
         stroke-dashoffset: 0;
+        opacity: 1;
     }
 }
 
 /* --- Hero Entrance & Handwriting Reveal --- */
 .hero--inner-tag {
-    --speed: 0.3;         // 1 = default | 0.3 = fast | 1.5 = slow
+    --speed: 0.3; // 1 = default | 0.3 = fast | 1.5 = slow
     --write-delay: 0.45s; // Waits for heroFadeIn before writing starts
     animation: heroFadeIn 0.7s ease-out both;
 }
@@ -655,26 +731,70 @@ footer {
     stroke: $white;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: writeReveal linear forwards;
+    stroke-dasharray: 115 250;
+    stroke-dashoffset: 115;
+    animation: writeReveal linear both;
 }
 
-// 1. "the"
-.s-the-t-stem { stroke-width: 18; animation-duration: calc(0.35s * var(--speed)); animation-delay: calc(var(--write-delay) + 0.20s * var(--speed)); animation-timing-function: ease-out; }
-.s-the-t-bar  { stroke-width: 16; animation-duration: calc(0.25s * var(--speed)); animation-delay: calc(var(--write-delay) + 0.50s * var(--speed)); animation-timing-function: ease-out; }
-.s-the-h      { stroke-width: 15; animation-duration: calc(0.50s * var(--speed)); animation-delay: calc(var(--write-delay) + 0.75s * var(--speed)); animation-timing-function: ease-in-out; }
-.s-the-e      { stroke-width: 15; animation-duration: calc(0.40s * var(--speed)); animation-delay: calc(var(--write-delay) + 1.20s * var(--speed)); animation-timing-function: ease-out; }
+/// 1. Caret (^)
+.s-caret {
+    stroke-width: 16;
+    animation-duration: calc(0.35s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 0.20s * var(--speed));
+    animation-timing-function: ease-in-out;
+}
 
-// 2. Caret (^)
-.s-caret      { stroke-width: 16; animation-duration: calc(0.35s * var(--speed)); animation-delay: calc(var(--write-delay) + 1.70s * var(--speed)); animation-timing-function: ease-in-out; }
+// 2. "the"
+.s-the-t-stem {
+    stroke-width: 18;
+    animation-duration: calc(0.35s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 0.70s * var(--speed));
+    animation-timing-function: ease-out;
+}
+
+.s-the-t-bar {
+    stroke-width: 16;
+    animation-duration: calc(0.25s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 1.00s * var(--speed));
+    animation-timing-function: ease-out;
+}
+
+.s-the-h {
+    stroke-width: 15;
+    animation-duration: calc(0.50s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 1.25s * var(--speed));
+    animation-timing-function: ease-in-out;
+}
+
+.s-the-e {
+    stroke-width: 15;
+    animation-duration: calc(0.40s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 1.70s * var(--speed));
+    animation-timing-function: ease-out;
+}
 
 // 3. Cross out the "t"
-.s-strike-t   { stroke-width: 14; animation-duration: calc(0.30s * var(--speed)); animation-delay: calc(var(--write-delay) + 2.25s * var(--speed)); animation-timing-function: ease-out; }
+.s-strike-t {
+    stroke-width: 14;
+    animation-duration: calc(0.30s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 2.30s * var(--speed));
+    animation-timing-function: ease-out;
+}
 
 // 4. "ce"
-.s-ce-c       { stroke-width: 16; animation-duration: calc(0.35s * var(--speed)); animation-delay: calc(var(--write-delay) + 2.70s * var(--speed)); animation-timing-function: ease-out; }
-.s-ce-e       { stroke-width: 20; animation-duration: calc(0.45s * var(--speed)); animation-delay: calc(var(--write-delay) + 3.00s * var(--speed)); animation-timing-function: ease-out; }
+.s-ce-c {
+    stroke-width: 16;
+    animation-duration: calc(0.35s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 2.75s * var(--speed));
+    animation-timing-function: ease-out;
+}
+
+.s-ce-e {
+    stroke-width: 20;
+    animation-duration: calc(0.45s * var(--speed));
+    animation-delay: calc(var(--write-delay) + 3.05s * var(--speed));
+    animation-timing-function: ease-out;
+}
 
 /* --- Scroll Reveal --- */
 .animate-ready {
@@ -690,14 +810,26 @@ footer {
 }
 
 .feature-card {
-    &:nth-child(1) { transition-delay: 0ms; }
-    &:nth-child(2) { transition-delay: 120ms; }
-    &:nth-child(3) { transition-delay: 240ms; }
-    &:nth-child(4) { transition-delay: 360ms; }
+    &:nth-child(1) {
+        transition-delay: 0ms;
+    }
+
+    &:nth-child(2) {
+        transition-delay: 120ms;
+    }
+
+    &:nth-child(3) {
+        transition-delay: 240ms;
+    }
+
+    &:nth-child(4) {
+        transition-delay: 360ms;
+    }
 }
 
 /* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
+
     .hero--inner-tag,
     .hero--inner-feature {
         animation: none;

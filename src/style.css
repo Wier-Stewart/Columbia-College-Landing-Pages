@@ -39,6 +39,11 @@ body {
   line-height: 1.5em;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
 h1,
 h2 {
   margin: 0;
@@ -442,8 +447,10 @@ p:last-child {
 
 /* --- Application Form Section --- */
 .form-section {
-  background-color: #6fbe8a;
-  color: #3d240d;
+  background-color: #573393;
+  color: #ffffff;
+  background-image: url("/src/images/cbook-bg.png");
+  background-size: cover;
 }
 .form-section .container {
   padding: 80px 60px;
@@ -521,15 +528,16 @@ footer .footer--sub {
 .form_container[id^=form_] {
   max-width: 800px;
   margin: 40px auto;
+  color: #212121;
 }
 .form_container[id^=form_] form {
-  padding: 20px 30px;
+  padding: 30px clamp(30px, 3vw, 40px);
   border-radius: 22px;
   background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(33, 33, 33, 0.1);
 }
 .form_container[id^=form_] .form_header .form_label {
-  width: max-content;
+  width: auto;
   padding: 0 0 0.5em;
   border-bottom: 1px solid;
   background: none;
@@ -574,6 +582,24 @@ footer .footer--sub {
   margin-top: 5px;
   font-size: 0.7rem;
 }
+.form_container[id^=form_] .form_responses .form_response {
+  line-height: 1.1em;
+  display: flex;
+  align-items: flex-start;
+  gap: 1ch;
+  margin-bottom: 0.5em;
+}
+.form_container[id^=form_] .form_responses .form_response:first-child {
+  margin-top: 0.5em;
+}
+.form_container[id^=form_] .form_responses .form_response input[type=radio],
+.form_container[id^=form_] .form_responses .form_response input[type=checkbox] {
+  flex-shrink: 0;
+  margin-top: 0.25em;
+}
+.form_container[id^=form_] .form_responses .form_response label {
+  margin: 0;
+}
 .form_container[id^=form_] .form_action_submit {
   text-align: right;
 }
@@ -608,8 +634,16 @@ footer .footer--sub {
   }
 }
 @keyframes writeReveal {
-  to {
+  0% {
+    stroke-dashoffset: 115;
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
     stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 /* --- Hero Entrance & Handwriting Reveal --- */
@@ -628,64 +662,64 @@ footer .footer--sub {
   stroke: #ffffff;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: writeReveal linear forwards;
+  stroke-dasharray: 115 250;
+  stroke-dashoffset: 115;
+  animation: writeReveal linear both;
+}
+
+.s-caret {
+  stroke-width: 16;
+  animation-duration: calc(0.35s * var(--speed));
+  animation-delay: calc(var(--write-delay) + 0.2s * var(--speed));
+  animation-timing-function: ease-in-out;
 }
 
 .s-the-t-stem {
   stroke-width: 18;
   animation-duration: calc(0.35s * var(--speed));
-  animation-delay: calc(var(--write-delay) + 0.2s * var(--speed));
+  animation-delay: calc(var(--write-delay) + 0.7s * var(--speed));
   animation-timing-function: ease-out;
 }
 
 .s-the-t-bar {
   stroke-width: 16;
   animation-duration: calc(0.25s * var(--speed));
-  animation-delay: calc(var(--write-delay) + 0.5s * var(--speed));
+  animation-delay: calc(var(--write-delay) + 1s * var(--speed));
   animation-timing-function: ease-out;
 }
 
 .s-the-h {
   stroke-width: 15;
   animation-duration: calc(0.5s * var(--speed));
-  animation-delay: calc(var(--write-delay) + 0.75s * var(--speed));
+  animation-delay: calc(var(--write-delay) + 1.25s * var(--speed));
   animation-timing-function: ease-in-out;
 }
 
 .s-the-e {
   stroke-width: 15;
   animation-duration: calc(0.4s * var(--speed));
-  animation-delay: calc(var(--write-delay) + 1.2s * var(--speed));
-  animation-timing-function: ease-out;
-}
-
-.s-caret {
-  stroke-width: 16;
-  animation-duration: calc(0.35s * var(--speed));
   animation-delay: calc(var(--write-delay) + 1.7s * var(--speed));
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease-out;
 }
 
 .s-strike-t {
   stroke-width: 14;
   animation-duration: calc(0.3s * var(--speed));
-  animation-delay: calc(var(--write-delay) + 2.25s * var(--speed));
+  animation-delay: calc(var(--write-delay) + 2.3s * var(--speed));
   animation-timing-function: ease-out;
 }
 
 .s-ce-c {
   stroke-width: 16;
   animation-duration: calc(0.35s * var(--speed));
-  animation-delay: calc(var(--write-delay) + 2.7s * var(--speed));
+  animation-delay: calc(var(--write-delay) + 2.75s * var(--speed));
   animation-timing-function: ease-out;
 }
 
 .s-ce-e {
   stroke-width: 20;
   animation-duration: calc(0.45s * var(--speed));
-  animation-delay: calc(var(--write-delay) + 3s * var(--speed));
+  animation-delay: calc(var(--write-delay) + 3.05s * var(--speed));
   animation-timing-function: ease-out;
 }
 
