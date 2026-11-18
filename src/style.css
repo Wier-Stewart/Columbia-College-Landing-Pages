@@ -662,7 +662,7 @@ p:last-child {
 
 /* --- Footer --- */
 footer {
-  background: linear-gradient(#573393, #382246);
+  background: #382246;
 }
 footer .container {
   padding: 60px 60px;

@@ -478,7 +478,7 @@ p {
         flex-basis: 100%;
     }
 
-   &--circle {
+    &--circle {
         position: absolute;
         top: -16%;
         left: -8%;
@@ -736,7 +736,7 @@ p {
 
 /* --- Footer --- */
 footer {
-    background: linear-gradient($purple, $plum);
+    background: $plum;
 
     .container {
         @include section-padding(60px, 60px);
@@ -1034,8 +1034,8 @@ footer {
 
 /* --- Hero Entrance & Handwriting Reveal --- */
 .hero--inner-tag {
-    --loop-duration: 6s;  // Total time for one full write -> hold -> reset cycle
-    --speed: 0.35;        // Stagger spacing between letters (lower = faster cascade)
+    --loop-duration: 6s; // Total time for one full write -> hold -> reset cycle
+    --speed: 0.35; // Stagger spacing between letters (lower = faster cascade)
     --write-delay: 0.45s; // Initial pause while hero fades in
     animation: heroFadeIn 0.7s ease-out both;
 }
