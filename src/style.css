@@ -611,7 +611,7 @@ p:last-child {
   left: 120px;
   z-index: 1;
   width: clamp(80px, 13vw, 120px);
-  filter: drop-shadow(-2px 2px 2px rgba(33, 33, 33, 0.3));
+  filter: drop-shadow(2px 2px 2px rgba(33, 33, 33, 0.3)) drop-shadow(3px 3px 3px rgba(33, 33, 33, 0.1));
 }
 @media (max-width: 992px) {
   .form-section .sticker {
