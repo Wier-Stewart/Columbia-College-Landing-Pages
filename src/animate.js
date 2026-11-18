@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
      1. Scroll Reveal (Intersection Observer)
      ======================================================================== */
   const animatedElements = document.querySelectorAll(
-    ".feature-card, .faq, .reveal"
+    ".feature-card, .reveal"
   );
 
   if (animatedElements.length && "IntersectionObserver" in window) {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const el = entry.target;
           el.classList.add("is-visible");
 
-          // Clear stagger transition-delay after entrance finishes so hover/active states respond instantly
+          // Clear initial stagger delay once the card has entered
           el.addEventListener(
             "transitionend",
             () => el.classList.add("has-entered"),
@@ -39,6 +39,37 @@ document.addEventListener("DOMContentLoaded", () => {
       el.classList.add("animate-ready");
       observer.observe(el);
     });
+  }
+
+  /* ========================================================================
+     1b. FAQ Dynamic Stack-In
+     ======================================================================== */
+  const faqContainer = document.querySelector(".faq-container");
+  const faqItems = faqContainer ? faqContainer.querySelectorAll(".faq") : [];
+
+  if (faqContainer && faqItems.length && "IntersectionObserver" in window) {
+    faqItems.forEach((item, index) => {
+      item.style.setProperty("--faq-index", index);
+    });
+
+    faqContainer.classList.add("faq-stack-ready");
+
+    const faqObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          faqContainer.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    faqObserver.observe(faqContainer);
   }
 
   /* ========================================================================
@@ -113,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Pause timer when tab is hidden to prevent queued jumps
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         stopRotation();
@@ -123,38 +153,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     startRotation();
-  }
-
-  /* ========================================================================
-     4. Hero Student Cutout Scroll Parallax
-     ======================================================================== */
-  const heroStudents = document.querySelector(".hero--inner-feature");
-
-  if (heroStudents && !prefersReducedMotion) {
-    // Release CSS keyframe fill-mode lock after entrance so inline transform works
-    heroStudents.addEventListener(
-      "animationend",
-      () => {
-        heroStudents.style.animation = "none";
-      },
-      { once: true }
-    );
-
-    let ticking = false;
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (ticking) return;
-        ticking = true;
-
-        window.requestAnimationFrame(() => {
-          const offset = Math.min(window.scrollY * 0.08, 30);
-          heroStudents.style.transform = `translateY(-${offset}px)`;
-          ticking = false;
-        });
-      },
-      { passive: true }
-    );
   }
 });
