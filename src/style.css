@@ -146,7 +146,7 @@ p:last-child {
   display: flex;
   width: 100%;
   margin-top: -50px;
-  background-image: url("src/images/hero-bg.png");
+  background-image: url("images/hero-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -413,7 +413,7 @@ p:last-child {
   width: 50px;
   height: 50px;
   margin-inline: auto;
-  background-image: url("src/images/squiggle-crown.svg");
+  background-image: url("images/squiggle-crown.svg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: contain;
@@ -578,7 +578,7 @@ p:last-child {
   position: relative;
   overflow-x: clip;
   background-color: #573393;
-  background-image: url("src/images/cbook-bg.png");
+  background-image: url("images/cbook-bg.png");
   background-size: cover;
   color: #ffffff;
 }

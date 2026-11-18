@@ -17,6 +17,14 @@
       "oAP" : "\/build\/.gitattributes",
       "oF" : 0
     },
+    "\/.github\/workflows\/static.yml" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/.github\/workflows\/static.yml",
+      "oF" : 0
+    },
     "\/build" : {
       "ft" : 65536,
       "oA" : 1,
@@ -212,14 +220,6 @@
       "opt" : 1,
       "plM" : 52780316221407,
       "prP" : 0
-    },
-    "\/src\/images\/traditional-undergraduate.html" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/build\/images\/traditional-undergraduate.html",
-      "oF" : 0
     },
     "\/src\/images\/undergrad-hero.png" : {
       "ft" : 32768,
