@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(()=>{const e=document.querySelectorAll(".feature-card, .faq, .reveal"),t=new IntersectionObserver(((e,t)=>{e.forEach((e=>{e.isIntersecting&&(e.target.classList.add("is-visible"),t.unobserve(e.target))}))}),{threshold:.15,rootMargin:"0px 0px -40px 0px"});e.forEach((e=>{e.classList.add("animate-ready"),t.observe(e)}))}));

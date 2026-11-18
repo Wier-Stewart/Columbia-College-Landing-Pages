@@ -69,6 +69,17 @@
       "oO" : 1,
       "oS" : 1
     },
+    "\/src\/animate.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/build\/animate-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/src\/header.js" : {
       "bF" : 0,
       "ft" : 64,
