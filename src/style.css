@@ -405,7 +405,7 @@ p:last-child {
 }
 .feature-card--circle {
   position: absolute;
-  top: -16%;
+  top: -20%;
   left: -8%;
   z-index: 2;
   width: 116%;
