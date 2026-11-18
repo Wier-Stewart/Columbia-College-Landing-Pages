@@ -3,17 +3,17 @@
 
 /* ==========================================================================
    TABLE OF CONTENTS
-1. Variables & Tokens
-2. Breakpoints & Mixins
-3. Base & Typography
-4. Layout & Reusable Components (.container, .btn)
-5. Page Sections (Header, Hero, Subhero, Trustbar, Features, FAQ, Form, Footer)
-6. Third-Party Embeds (Slate Form Overrides)
-7. Animations & Accessibility
+   1. Variables & Tokens
+   2. Breakpoints & Mixins
+   3. Base & Typography
+   4. Layout & Reusable Components
+   5. Page Sections (Header, Hero, Subhero, Trustbar, Features, FAQ, Form, Footer)
+   6. Third-Party Embeds (Slate Form Overrides)
+   7. Animations & Accessibility
    ========================================================================== */
 
 /* ==========================================================================
-1. Variables & Tokens
+   1. Variables & Tokens
    ========================================================================== */
 
 // Fonts
@@ -39,44 +39,15 @@ $container-max: 1280px;
 $container-narrow: 1140px;
 
 /* ==========================================================================
-2. Breakpoints & Mixins
+   2. Breakpoints & Mixins
    ========================================================================== */
 
-@mixin xl {
-    @media (max-width: 1440px) {
-        @content;
-    }
-}
-
-@mixin lg {
-    @media (max-width: 1200px) {
-        @content;
-    }
-}
-
-@mixin md {
-    @media (max-width: 992px) {
-        @content;
-    }
-}
-
-@mixin sm {
-    @media (max-width: 768px) {
-        @content;
-    }
-}
-
-@mixin vs {
-    @media (max-width: 600px) {
-        @content;
-    }
-}
-
-@mixin xs {
-    @media (max-width: 480px) {
-        @content;
-    }
-}
+@mixin xl { @media (max-width: 1440px) { @content; } }
+@mixin lg { @media (max-width: 1200px) { @content; } }
+@mixin md { @media (max-width: 992px)  { @content; } }
+@mixin sm { @media (max-width: 768px)  { @content; } }
+@mixin vs { @media (max-width: 600px)  { @content; } }
+@mixin xs { @media (max-width: 480px)  { @content; } }
 
 @mixin section-padding($py: 80px, $px: 60px) {
     padding: $py $px;
@@ -108,13 +79,18 @@ $container-narrow: 1140px;
 }
 
 /* ==========================================================================
-3. Base & Typography
+   3. Base & Typography
    ========================================================================== */
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 html,
@@ -130,13 +106,6 @@ body {
     font-family: $sans;
     font-size: clamp(18px, 3vw, 20px);
     line-height: 1.5em;
-
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-
 }
 
 h1,
@@ -163,7 +132,7 @@ p {
 }
 
 /* ==========================================================================
-4. Layout & Reusable Components
+   4. Layout & Reusable Components
    ========================================================================== */
 
 .container {
@@ -180,7 +149,7 @@ p {
 }
 
 /* ==========================================================================
-5. Page Sections
+   5. Page Sections
    ========================================================================== */
 
 /* --- Sticky Header / Logo Banner --- */
@@ -193,11 +162,13 @@ p {
         margin-inline: auto;
         background: linear-gradient($plum, $purple);
         text-align: center;
-        clip-path: polygon(-25px 0,
-                calc(100% + 25px) 0,
-                calc(100% + 25px) calc(100% - 40px),
-                50% 100%,
-                -25px calc(100% - 40px));
+        clip-path: polygon(
+            -25px 0,
+            calc(100% + 25px) 0,
+            calc(100% + 25px) calc(100% - 40px),
+            50% 100%,
+            -25px calc(100% - 40px)
+        );
         transition: 0.3s ease-in;
     }
 
@@ -223,11 +194,13 @@ p {
         filter: drop-shadow(0 3px 5px rgba($black, 0.4));
 
         .logo-banner--inner {
-            clip-path: polygon(-25px 0,
-                    calc(100% + 25px) 0,
-                    calc(100% + 25px) 100%,
-                    50% 100%,
-                    -25px 100%);
+            clip-path: polygon(
+                -25px 0,
+                calc(100% + 25px) 0,
+                calc(100% + 25px) 100%,
+                50% 100%,
+                -25px 100%
+            );
         }
 
         img {
@@ -275,6 +248,7 @@ p {
             margin: 0 auto;
             object-fit: contain;
             object-position: bottom center;
+            transition: transform 0.1s linear; // For scroll parallax
         }
 
         &-label {
@@ -308,6 +282,7 @@ p {
 /* --- Subhero & Primary CTA --- */
 .subhero {
     @include section-padding(120px, 60px);
+    position: relative;
     background-color: $purple;
     background-image: linear-gradient($plum, $purple);
     color: $white;
@@ -319,17 +294,61 @@ p {
     }
 }
 
-.cta {
-    padding-top: clamp(40px, 4vw, 80px);
+.animated-cta-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 65px auto 30px;
 
-    .microcopy {
-        display: block;
-        margin-top: 40px;
-        font-size: 0.8rem;
-        font-style: italic;
-        font-weight: 200;
-        line-height: 1.1em;
+    @include vs {
+        margin: 55px auto 25px;
     }
+
+    .btn {
+        transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+
+        &:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 6px 6px 0 $yellow;
+        }
+
+        &:active {
+            transform: translate(0, 0);
+            box-shadow: 2px 2px 0 $yellow;
+        }
+    }
+}
+
+.swirl-arrow {
+    position: absolute;
+    top: -90%;
+    left: -12%;
+    z-index: 10;
+    width: 66px;
+    height: auto;
+    pointer-events: none;
+
+    @include vs {
+        width: 60px;
+    }
+
+    path {
+        fill: none;
+        stroke: $white;
+        stroke-width: 6.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+    }
+}
+
+.microcopy {
+    display: block;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 200;
+    line-height: 1.1em;
 }
 
 /* --- Trustbar --- */
@@ -357,15 +376,11 @@ p {
             margin: auto;
             border-radius: 100%;
             background-color: $green;
+            animation: blink 0.8s ease-in-out infinite alternate;
         }
 
-        &::before {
-            margin-right: 1.3ch;
-        }
-
-        &::after {
-            margin-left: 1.3ch;
-        }
+        &::before { margin-right: 1.3ch; }
+        &::after  { margin-left: 1.3ch; }
     }
 }
 
@@ -375,6 +390,10 @@ p {
 
     .container {
         @include section-padding;
+
+        &.is-visible h2 .heading-squiggle path {
+            stroke-dashoffset: 0;
+        }
     }
 
     h2 {
@@ -382,14 +401,21 @@ p {
         color: $plum;
         text-align: center;
 
-        &::after {
-            content: "";
+        .heading-squiggle {
             display: block;
-            width: 3ch;
-            height: 5px;
-            margin: 20px auto;
-            border-radius: 30px;
-            background-color: $yellow;
+            width: 140px;
+            height: auto;
+            margin: 10px auto 0;
+
+            path {
+                fill: none;
+                stroke: $yellow;
+                stroke-width: 6;
+                stroke-linecap: round;
+                stroke-dasharray: 100;
+                stroke-dashoffset: 100;
+                transition: stroke-dashoffset 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s;
+            }
         }
     }
 }
@@ -406,6 +432,7 @@ p {
 }
 
 .feature-card {
+    position: relative;
     flex: 1 1 25%;
     padding: 30px;
     border: 1px solid $border-purple;
@@ -419,6 +446,43 @@ p {
 
     @include vs {
         flex-basis: 100%;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        width: 50px;
+        height: 50px;
+        margin-inline: auto;
+        background-image: url("/src/images/squiggle-crown.svg");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: contain;
+        transform-origin: center bottom;
+        opacity: 0;
+        transform: scale(0.4) rotate(-20deg) translateY(8px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    }
+
+    &.active {
+        border-color: $purple;
+        transform: translateY(-6px);
+        box-shadow: 0 10px 24px rgba($plum, 0.14);
+        
+        &::before {
+            opacity: 1;
+            transform: scale(1) rotate(6deg) translateY(0);
+            animation: crownRock 0.3s linear infinite alternate 0.4s;
+        }
+
+        .feature-card--icon::before {
+            transform: scale(1.3) translate(2px, -2px);
+            background-color: $green;
+        }
     }
 
     &--icon {
@@ -439,6 +503,7 @@ p {
             border-radius: 100%;
             background-color: $yellow;
             box-shadow: 0 0 1px rgba($black, 0.3);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
         }
 
         svg {
@@ -466,8 +531,11 @@ p {
 
 /* --- FAQ Section --- */
 .faq-section {
+    overflow-x: clip;
+
     .container {
         @include section-padding;
+        position: relative;
         max-width: $container-narrow;
     }
 
@@ -481,6 +549,22 @@ p {
 
         @include vs {
             margin: 40px 0;
+        }
+    }
+
+    .sticker {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: clamp(80px, 10vw, 140px);
+        filter: drop-shadow(-2px 2px 2px rgba($black, 0.3));
+
+        @include vs {
+            position: relative;
+            bottom: auto;
+            right: auto;
+            display: block;
+            margin: -50px 0 -30px auto;
         }
     }
 }
@@ -520,10 +604,12 @@ p {
 
 /* --- Application Form Section --- */
 .form-section {
+    position: relative;
+    overflow-x: clip;
     background-color: $purple;
-    color: $white;
-    background-image: url('/src/images/cbook-bg.png');
+    background-image: url("/src/images/cbook-bg.png");
     background-size: cover;
+    color: $white;
 
     .container {
         @include section-padding;
@@ -534,6 +620,41 @@ p {
         margin: 0 auto 0.5em;
         text-align: center;
     }
+
+    .sticker {
+        position: absolute;
+        bottom: clamp(20px, 4vw, 40px);
+        left: 100px;
+        z-index: 1;
+        width: clamp(100px, 20vw, 200px);
+        filter: drop-shadow(2px 2px 2px rgba($black, 0.3));
+
+        @include md {
+            left: 20px;
+        }
+
+        @include vs {
+            bottom: 40px;
+        }
+    }
+}
+
+/* --- Shared Sticker Animation for FAQ & Form --- */
+.sticker {
+    cursor: pointer;
+    transform-origin: bottom center;
+    opacity: 0;
+    transform: scale(0.6) rotate(-12deg);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, opacity 0.3s ease 0.35s;
+
+    &:hover {
+        animation: stickerWiggle 0.5s ease-in-out;
+    }
+}
+
+.reveal.is-visible .sticker {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
 }
 
 /* --- Footer --- */
@@ -582,19 +703,28 @@ footer {
 }
 
 /* ==========================================================================
-6. Third-Party Embeds (Slate Form Overrides)
+   6. Third-Party Embeds (Slate Form Overrides)
    ========================================================================== */
 
 .form_container[id^="form_"] {
+    position: relative;
     max-width: 800px;
     margin: 40px auto;
+    padding: 20px;
+    border-radius: 32px;
+    background-color: $white;
+    box-shadow: 0 2px 4px rgba($black, 0.3);
     color: $black;
+
+    @include sm {
+        padding: 10px;
+    }
 
     form {
         padding: 30px clamp(30px, 3vw, 40px);
         border-radius: 22px;
         background-color: $white;
-        box-shadow: 0 2px 8px rgba($black, 0.1);
+        box-shadow: 0 0 0 2px $purple;
     }
 
     .form_header .form_label {
@@ -649,28 +779,25 @@ footer {
         }
     }
 
-    .form_responses {
-        .form_response {
-            line-height: 1.1em;
-            display: flex;
-            align-items: flex-start;
-            gap: 1ch;
-            margin-bottom: 0.5em;
+    .form_responses .form_response {
+        display: flex;
+        align-items: flex-start;
+        gap: 1ch;
+        margin-bottom: 0.5em;
+        line-height: 1.1em;
 
-            &:first-child {
-                margin-top: .5em;
-            }
+        &:first-child {
+            margin-top: 0.5em;
+        }
 
-            input[type='radio'],
-            input[type='checkbox'] {
-                flex-shrink: 0;
-                margin-top: 0.25em; // Aligns the circle with the first line of text
-            }
+        input[type="radio"],
+        input[type="checkbox"] {
+            flex-shrink: 0;
+            margin-top: 0.25em; // Aligns circle with first line of text
+        }
 
-            label {
-                margin: 0;
-            }
-
+        label {
+            margin: 0;
         }
     }
 
@@ -684,15 +811,15 @@ footer {
 }
 
 /* ==========================================================================
-7. Animations & Accessibility
+   7. Animations & Accessibility
    ========================================================================== */
 
+/* --- Keyframes --- */
 @keyframes heroFadeIn {
     from {
         opacity: 0;
         transform: translateY(16px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -704,15 +831,49 @@ footer {
         stroke-dashoffset: 115;
         opacity: 0;
     }
-
     1% {
         opacity: 1;
     }
-
     100% {
         stroke-dashoffset: 0;
         opacity: 1;
     }
+}
+
+@keyframes swirlShaftLoop {
+    0% { stroke-dashoffset: 100; }
+    18% { stroke-dashoffset: 0; }
+    60% { stroke-dashoffset: 0; }
+    78%, 100% { stroke-dashoffset: 100; }
+}
+
+@keyframes swirlHeadLoop {
+    0%, 16% { stroke-dashoffset: 100; }
+    23% { stroke-dashoffset: 0; }
+    55% { stroke-dashoffset: 0; }
+    62%, 100% { stroke-dashoffset: 100; }
+}
+
+@keyframes swirlRestHide {
+    0% { opacity: 0; }
+    1%, 77% { opacity: 1; }
+    78%, 100% { opacity: 0; }
+}
+
+@keyframes crownRock {
+    0% { transform: rotate(4deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+@keyframes blink {
+    0% { opacity: 0.25; }
+    100% { opacity: 1; }
+}
+
+@keyframes stickerWiggle {
+    0%, 100% { transform: rotate(0deg) scale(1.05); }
+    25%      { transform: rotate(-7deg) scale(1.08); }
+    75%      { transform: rotate(7deg) scale(1.08); }
 }
 
 /* --- Hero Entrance & Handwriting Reveal --- */
@@ -736,7 +897,7 @@ footer {
     animation: writeReveal linear both;
 }
 
-/// 1. Caret (^)
+// 1. Caret (^)
 .s-caret {
     stroke-width: 16;
     animation-duration: calc(0.35s * var(--speed));
@@ -796,43 +957,66 @@ footer {
     animation-timing-function: ease-out;
 }
 
+/* --- Swirl CTA Arrow --- */
+.swirl-arrow {
+    animation: swirlRestHide 6.5s linear infinite;
+}
+
+.swirl-shaft {
+    animation: swirlShaftLoop 6.5s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+}
+
+.swirl-head {
+    animation: swirlHeadLoop 6.5s ease-in-out infinite;
+}
+
 /* --- Scroll Reveal --- */
 .animate-ready {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.35s ease, box-shadow 0.35s ease;
     will-change: opacity, transform;
 
     &.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
+
+    &.has-entered {
+        transition-delay: 0ms;
+    }
 }
 
 .feature-card {
-    &:nth-child(1) {
-        transition-delay: 0ms;
-    }
-
-    &:nth-child(2) {
-        transition-delay: 120ms;
-    }
-
-    &:nth-child(3) {
-        transition-delay: 240ms;
-    }
-
-    &:nth-child(4) {
-        transition-delay: 360ms;
-    }
+    &:nth-child(1) { transition-delay: 0ms; }
+    &:nth-child(2) { transition-delay: 120ms; }
+    &:nth-child(3) { transition-delay: 240ms; }
+    &:nth-child(4) { transition-delay: 360ms; }
 }
 
 /* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 
     .hero--inner-tag,
-    .hero--inner-feature {
+    .hero--inner-feature,
+    .swirl-arrow,
+    .feature-card::before,
+    .trustbar span::before,
+    .trustbar span::after,
+    .sticker:hover {
         animation: none;
+    }
+
+    .swirl-arrow {
+        opacity: 1;
+
+        path {
+            animation: none;
+            stroke-dashoffset: 0;
+        }
     }
 
     .reveal-stroke {
@@ -841,6 +1025,13 @@ footer {
     }
 
     .animate-ready {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .sticker,
+    .reveal.is-visible .sticker {
         opacity: 1;
         transform: none;
         transition: none;

@@ -1,27 +1,32 @@
 @import url("https://use.typekit.net/bko7run.css");
 /* ==========================================================================
    TABLE OF CONTENTS
-1. Variables & Tokens
-2. Breakpoints & Mixins
-3. Base & Typography
-4. Layout & Reusable Components (.container, .btn)
-5. Page Sections (Header, Hero, Subhero, Trustbar, Features, FAQ, Form, Footer)
-6. Third-Party Embeds (Slate Form Overrides)
-7. Animations & Accessibility
+   1. Variables & Tokens
+   2. Breakpoints & Mixins
+   3. Base & Typography
+   4. Layout & Reusable Components
+   5. Page Sections (Header, Hero, Subhero, Trustbar, Features, FAQ, Form, Footer)
+   6. Third-Party Embeds (Slate Form Overrides)
+   7. Animations & Accessibility
    ========================================================================== */
 /* ==========================================================================
-1. Variables & Tokens
+   1. Variables & Tokens
    ========================================================================== */
 /* ==========================================================================
-2. Breakpoints & Mixins
+   2. Breakpoints & Mixins
    ========================================================================== */
 /* ==========================================================================
-3. Base & Typography
+   3. Base & Typography
    ========================================================================== */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 html,
@@ -37,11 +42,6 @@ body {
   font-family: proxima-nova, sans-serif;
   font-size: clamp(18px, 3vw, 20px);
   line-height: 1.5em;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px;
 }
 
 h1,
@@ -67,7 +67,7 @@ p:last-child {
 }
 
 /* ==========================================================================
-4. Layout & Reusable Components
+   4. Layout & Reusable Components
    ========================================================================== */
 .container {
   max-width: 1280px;
@@ -96,7 +96,7 @@ p:last-child {
 }
 
 /* ==========================================================================
-5. Page Sections
+   5. Page Sections
    ========================================================================== */
 /* --- Sticky Header / Logo Banner --- */
 .logo-banner {
@@ -176,6 +176,7 @@ p:last-child {
   margin: 0 auto;
   object-fit: contain;
   object-position: bottom center;
+  transition: transform 0.1s linear;
 }
 .hero--inner-label {
   position: absolute;
@@ -219,6 +220,7 @@ p:last-child {
   }
 }
 .subhero {
+  position: relative;
   background-color: #573393;
   background-image: linear-gradient(#382246, #573393);
   color: #ffffff;
@@ -229,10 +231,53 @@ p:last-child {
   font-weight: 100;
 }
 
-.cta {
-  padding-top: clamp(40px, 4vw, 80px);
+.animated-cta-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 65px auto 30px;
 }
-.cta .microcopy {
+@media (max-width: 600px) {
+  .animated-cta-wrapper {
+    margin: 55px auto 25px;
+  }
+}
+.animated-cta-wrapper .btn {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+}
+.animated-cta-wrapper .btn:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 #fbb03a;
+}
+.animated-cta-wrapper .btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 #fbb03a;
+}
+
+.swirl-arrow {
+  position: absolute;
+  top: -90%;
+  left: -12%;
+  z-index: 10;
+  width: 66px;
+  height: auto;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .swirl-arrow {
+    width: 60px;
+  }
+}
+.swirl-arrow path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 6.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.microcopy {
   display: block;
   margin-top: 40px;
   font-size: 0.8rem;
@@ -277,6 +322,7 @@ p:last-child {
   margin: auto;
   border-radius: 100%;
   background-color: #6fbe8a;
+  animation: blink 0.8s ease-in-out infinite alternate;
 }
 .trustbar span::before {
   margin-right: 1.3ch;
@@ -302,19 +348,28 @@ p:last-child {
     padding: 40px 20px;
   }
 }
+.feature .container.is-visible h2 .heading-squiggle path {
+  stroke-dashoffset: 0;
+}
 .feature h2 {
   position: relative;
   color: #382246;
   text-align: center;
 }
-.feature h2::after {
-  content: "";
+.feature h2 .heading-squiggle {
   display: block;
-  width: 3ch;
-  height: 5px;
-  margin: 20px auto;
-  border-radius: 30px;
-  background-color: #fbb03a;
+  width: 140px;
+  height: auto;
+  margin: 10px auto 0;
+}
+.feature h2 .heading-squiggle path {
+  fill: none;
+  stroke: #fbb03a;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s;
 }
 
 .feature-cards {
@@ -330,6 +385,7 @@ p:last-child {
 }
 
 .feature-card {
+  position: relative;
   flex: 1 1 25%;
   padding: 30px;
   border: 1px solid rgb(87.4688057041%, 83.4046345811%, 94.2424242424%);
@@ -346,6 +402,39 @@ p:last-child {
   .feature-card {
     flex-basis: 100%;
   }
+}
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  margin-inline: auto;
+  background-image: url("/src/images/squiggle-crown.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform-origin: center bottom;
+  opacity: 0;
+  transform: scale(0.4) rotate(-20deg) translateY(8px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+.feature-card.active {
+  border-color: #573393;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(56, 34, 70, 0.14);
+}
+.feature-card.active::before {
+  opacity: 1;
+  transform: scale(1) rotate(6deg) translateY(0);
+  animation: crownRock 0.3s linear infinite alternate 0.4s;
+}
+.feature-card.active .feature-card--icon::before {
+  transform: scale(1.3) translate(2px, -2px);
+  background-color: #6fbe8a;
 }
 .feature-card--icon {
   position: relative;
@@ -365,6 +454,7 @@ p:last-child {
   border-radius: 100%;
   background-color: #fbb03a;
   box-shadow: 0 0 1px rgba(33, 33, 33, 0.3);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
 }
 .feature-card--icon svg {
   position: relative;
@@ -386,6 +476,9 @@ p:last-child {
 }
 
 /* --- FAQ Section --- */
+.faq-section {
+  overflow-x: clip;
+}
 .faq-section .container {
   padding: 80px 60px;
 }
@@ -400,6 +493,7 @@ p:last-child {
   }
 }
 .faq-section .container {
+  position: relative;
   max-width: 1140px;
 }
 .faq-section h2 {
@@ -412,6 +506,22 @@ p:last-child {
 @media (max-width: 600px) {
   .faq-section .faq-container {
     margin: 40px 0;
+  }
+}
+.faq-section .sticker {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: clamp(80px, 10vw, 140px);
+  filter: drop-shadow(-2px 2px 2px rgba(33, 33, 33, 0.3));
+}
+@media (max-width: 600px) {
+  .faq-section .sticker {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    display: block;
+    margin: -50px 0 -30px auto;
   }
 }
 
@@ -447,10 +557,12 @@ p:last-child {
 
 /* --- Application Form Section --- */
 .form-section {
+  position: relative;
+  overflow-x: clip;
   background-color: #573393;
-  color: #ffffff;
   background-image: url("/src/images/cbook-bg.png");
   background-size: cover;
+  color: #ffffff;
 }
 .form-section .container {
   padding: 80px 60px;
@@ -471,6 +583,41 @@ p:last-child {
 .form-section h2 {
   margin: 0 auto 0.5em;
   text-align: center;
+}
+.form-section .sticker {
+  position: absolute;
+  bottom: clamp(20px, 4vw, 40px);
+  left: 100px;
+  z-index: 1;
+  width: clamp(100px, 20vw, 200px);
+  filter: drop-shadow(2px 2px 2px rgba(33, 33, 33, 0.3));
+}
+@media (max-width: 992px) {
+  .form-section .sticker {
+    left: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .form-section .sticker {
+    bottom: 40px;
+  }
+}
+
+/* --- Shared Sticker Animation for FAQ & Form --- */
+.sticker {
+  cursor: pointer;
+  transform-origin: bottom center;
+  opacity: 0;
+  transform: scale(0.6) rotate(-12deg);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, opacity 0.3s ease 0.35s;
+}
+.sticker:hover {
+  animation: stickerWiggle 0.5s ease-in-out;
+}
+
+.reveal.is-visible .sticker {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
 }
 
 /* --- Footer --- */
@@ -523,18 +670,28 @@ footer .footer--sub {
 }
 
 /* ==========================================================================
-6. Third-Party Embeds (Slate Form Overrides)
+   6. Third-Party Embeds (Slate Form Overrides)
    ========================================================================== */
 .form_container[id^=form_] {
+  position: relative;
   max-width: 800px;
   margin: 40px auto;
+  padding: 20px;
+  border-radius: 32px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(33, 33, 33, 0.3);
   color: #212121;
+}
+@media (max-width: 768px) {
+  .form_container[id^=form_] {
+    padding: 10px;
+  }
 }
 .form_container[id^=form_] form {
   padding: 30px clamp(30px, 3vw, 40px);
   border-radius: 22px;
   background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(33, 33, 33, 0.1);
+  box-shadow: 0 0 0 2px #573393;
 }
 .form_container[id^=form_] .form_header .form_label {
   width: auto;
@@ -583,11 +740,11 @@ footer .footer--sub {
   font-size: 0.7rem;
 }
 .form_container[id^=form_] .form_responses .form_response {
-  line-height: 1.1em;
   display: flex;
   align-items: flex-start;
   gap: 1ch;
   margin-bottom: 0.5em;
+  line-height: 1.1em;
 }
 .form_container[id^=form_] .form_responses .form_response:first-child {
   margin-top: 0.5em;
@@ -621,8 +778,9 @@ footer .footer--sub {
 }
 
 /* ==========================================================================
-7. Animations & Accessibility
+   7. Animations & Accessibility
    ========================================================================== */
+/* --- Keyframes --- */
 @keyframes heroFadeIn {
   from {
     opacity: 0;
@@ -644,6 +802,72 @@ footer .footer--sub {
   100% {
     stroke-dashoffset: 0;
     opacity: 1;
+  }
+}
+@keyframes swirlShaftLoop {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  18% {
+    stroke-dashoffset: 0;
+  }
+  60% {
+    stroke-dashoffset: 0;
+  }
+  78%, 100% {
+    stroke-dashoffset: 100;
+  }
+}
+@keyframes swirlHeadLoop {
+  0%, 16% {
+    stroke-dashoffset: 100;
+  }
+  23% {
+    stroke-dashoffset: 0;
+  }
+  55% {
+    stroke-dashoffset: 0;
+  }
+  62%, 100% {
+    stroke-dashoffset: 100;
+  }
+}
+@keyframes swirlRestHide {
+  0% {
+    opacity: 0;
+  }
+  1%, 77% {
+    opacity: 1;
+  }
+  78%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes crownRock {
+  0% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes stickerWiggle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1.05);
+  }
+  25% {
+    transform: rotate(-7deg) scale(1.08);
+  }
+  75% {
+    transform: rotate(7deg) scale(1.08);
   }
 }
 /* --- Hero Entrance & Handwriting Reveal --- */
@@ -723,16 +947,32 @@ footer .footer--sub {
   animation-timing-function: ease-out;
 }
 
+/* --- Swirl CTA Arrow --- */
+.swirl-arrow {
+  animation: swirlRestHide 6.5s linear infinite;
+}
+
+.swirl-shaft {
+  animation: swirlShaftLoop 6.5s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+}
+
+.swirl-head {
+  animation: swirlHeadLoop 6.5s ease-in-out infinite;
+}
+
 /* --- Scroll Reveal --- */
 .animate-ready {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.35s ease, box-shadow 0.35s ease;
   will-change: opacity, transform;
 }
 .animate-ready.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+.animate-ready.has-entered {
+  transition-delay: 0ms;
 }
 
 .feature-card:nth-child(1) {
@@ -750,15 +990,36 @@ footer .footer--sub {
 
 /* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .hero--inner-tag,
-  .hero--inner-feature {
+  .hero--inner-feature,
+  .swirl-arrow,
+  .feature-card::before,
+  .trustbar span::before,
+  .trustbar span::after,
+  .sticker:hover {
     animation: none;
+  }
+  .swirl-arrow {
+    opacity: 1;
+  }
+  .swirl-arrow path {
+    animation: none;
+    stroke-dashoffset: 0;
   }
   .reveal-stroke {
     animation: none;
     stroke-dashoffset: 0;
   }
   .animate-ready {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .sticker,
+  .reveal.is-visible .sticker {
     opacity: 1;
     transform: none;
     transition: none;

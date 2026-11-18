@@ -47,6 +47,12 @@
       "oAP" : "\/build\/index.html",
       "oF" : 0
     },
+    "\/node_modules" : {
+      "ft" : 65536,
+      "oA" : 2,
+      "oAP" : "\/build\/node_modules",
+      "oF" : 0
+    },
     "\/package-lock.json" : {
       "ft" : 524288,
       "oA" : 2,
@@ -144,6 +150,32 @@
       "q" : 90,
       "rq" : 75
     },
+    "\/src\/images\/KoalaSticker.png" : {
+      "ft" : 32768,
+      "iS" : 292807,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/KoalaSticker.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/src\/images\/KoalaSticker2.png" : {
+      "ft" : 32768,
+      "iS" : 424139,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/KoalaSticker2.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
     "\/src\/images\/logo-stacked-horz-rgb.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -159,6 +191,29 @@
       "miP" : 0,
       "oA" : 0,
       "oAP" : "\/build\/images\/logo-white.svg",
+      "oF" : 0,
+      "opt" : 1,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/src\/images\/mascot.png" : {
+      "ft" : 32768,
+      "iS" : 497010,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/mascot.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/src\/images\/squiggle-crown.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/squiggle-crown.svg",
       "oF" : 0,
       "opt" : 1,
       "plM" : 52780316221407,
