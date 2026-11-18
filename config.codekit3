@@ -211,6 +211,19 @@
       "q" : 90,
       "rq" : 75
     },
+    "\/src\/images\/SC-sticker.png" : {
+      "ft" : 32768,
+      "iS" : 298248,
+      "oA" : 0,
+      "oAP" : "\/build\/images\/SC-sticker.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
     "\/src\/images\/squiggle-crown.svg" : {
       "ft" : 2097152,
       "miP" : 0,
