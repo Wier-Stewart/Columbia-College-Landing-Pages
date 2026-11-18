@@ -492,7 +492,7 @@ p {
         .circle-stroke {
             fill: none;
             stroke: $red;
-            stroke-width: 2.5px; 
+            stroke-width: 2.5px; // Adjust this value (e.g., 3.5px or 6px) to fine-tune thickness
             stroke-linecap: round;
             stroke-linejoin: round;
             stroke-dasharray: 100;
@@ -914,9 +914,29 @@ footer {
         opacity: 1;
     }
 
-    100% {
+    /* 1. Stroke finishes drawing (~0.4s into the 6s loop) */
+    7% {
         stroke-dashoffset: 0;
         opacity: 1;
+    }
+
+    /* 2. Hold the finished yellow lettering on screen */
+    70% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    /* 3. Fade out cleanly instead of rewinding backward */
+    76% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+    }
+
+    /* 4. Reset stroke invisibly & pause before next loop */
+    77%,
+    100% {
+        stroke-dashoffset: 115;
+        opacity: 0;
     }
 }
 
@@ -1014,8 +1034,9 @@ footer {
 
 /* --- Hero Entrance & Handwriting Reveal --- */
 .hero--inner-tag {
-    --speed: 0.3; // 1 = default | 0.3 = fast | 1.5 = slow
-    --write-delay: 0.45s; // Waits for heroFadeIn before writing starts
+    --loop-duration: 6s;  // Total time for one full write -> hold -> reset cycle
+    --speed: 0.35;        // Stagger spacing between letters (lower = faster cascade)
+    --write-delay: 0.45s; // Initial pause while hero fades in
     animation: heroFadeIn 0.7s ease-out both;
 }
 
@@ -1030,67 +1051,51 @@ footer {
     stroke-linejoin: round;
     stroke-dasharray: 115 250;
     stroke-dashoffset: 115;
-    animation: writeReveal linear both;
+    animation: writeReveal var(--loop-duration) ease-out infinite backwards;
 }
 
 // 1. Caret (^)
 .s-caret {
     stroke-width: 16;
-    animation-duration: calc(0.35s * var(--speed));
     animation-delay: calc(var(--write-delay) + 0.20s * var(--speed));
-    animation-timing-function: ease-in-out;
 }
 
 // 2. "the"
 .s-the-t-stem {
     stroke-width: 18;
-    animation-duration: calc(0.35s * var(--speed));
     animation-delay: calc(var(--write-delay) + 0.70s * var(--speed));
-    animation-timing-function: ease-out;
 }
 
 .s-the-t-bar {
     stroke-width: 16;
-    animation-duration: calc(0.25s * var(--speed));
     animation-delay: calc(var(--write-delay) + 1.00s * var(--speed));
-    animation-timing-function: ease-out;
 }
 
 .s-the-h {
     stroke-width: 15;
-    animation-duration: calc(0.50s * var(--speed));
     animation-delay: calc(var(--write-delay) + 1.25s * var(--speed));
-    animation-timing-function: ease-in-out;
 }
 
 .s-the-e {
     stroke-width: 15;
-    animation-duration: calc(0.40s * var(--speed));
     animation-delay: calc(var(--write-delay) + 1.70s * var(--speed));
-    animation-timing-function: ease-out;
 }
 
 // 3. Cross out the "t"
 .s-strike-t {
     stroke-width: 14;
-    animation-duration: calc(0.30s * var(--speed));
     animation-delay: calc(var(--write-delay) + 2.30s * var(--speed));
-    animation-timing-function: ease-out;
 }
 
 // 4. "ce"
 .s-ce-c {
     stroke-width: 16;
-    animation-duration: calc(0.35s * var(--speed));
     animation-delay: calc(var(--write-delay) + 2.75s * var(--speed));
-    animation-timing-function: ease-out;
 }
 
 .s-ce-e {
     stroke-width: 20;
-    animation-duration: calc(0.45s * var(--speed));
     animation-delay: calc(var(--write-delay) + 3.05s * var(--speed));
-    animation-timing-function: ease-out;
 }
 
 /* --- Swirl CTA Arrow --- */
@@ -1150,7 +1155,6 @@ footer {
     .hero--inner-tag,
     .hero--inner-feature,
     .swirl-arrow,
-    .feature-card::before,
     .trustbar span::before,
     .trustbar span::after,
     .sticker:hover {
@@ -1166,12 +1170,19 @@ footer {
         }
     }
 
-    .reveal-stroke {
+    .reveal-stroke,
+    .circle-stroke {
         animation: none;
+        transition: none;
         stroke-dashoffset: 0;
     }
 
-    .animate-ready {
+    .feature-card--circle {
+        transition: none;
+    }
+
+    .animate-ready,
+    .faq-stack-ready .faq {
         opacity: 1;
         transform: none;
         transition: none;
@@ -1182,18 +1193,5 @@ footer {
         opacity: 1;
         transform: none;
         transition: none;
-    }
-
-    .animate-ready,
-    .faq-stack-ready .faq {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-    .reveal-stroke,
-    .circle-stroke {
-        animation: none;
-        transition: none;
-        stroke-dashoffset: 0;
     }
 }
